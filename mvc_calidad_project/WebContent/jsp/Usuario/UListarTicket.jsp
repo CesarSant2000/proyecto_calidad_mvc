@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Tickets-Listar Ticket</title>
-    <link rel="stylesheet" href="../../BootStrap/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <!--Header-->
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark inli">
         <div class="collapse navbar-collapse" id="navbarNav">
-            <img src="../Imagenes/ticket.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="../../imagenes/ticket.png" width="30" height="30" class="d-inline-block align-top" alt="">
             <ul class="navbar-nav ">
                 <li class="nav-item  px-3">
                     <a class="nav-link" href="#">Crear</a>
