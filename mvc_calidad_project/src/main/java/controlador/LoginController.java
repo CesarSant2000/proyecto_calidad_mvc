@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 		Usuario usuarioAutenticado = UsuarioDAO.autenticar(usuario, password);
 		if(usuarioAutenticado != null) {
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(true);
 			switch(usuarioAutenticado.getTipoUsuario()) {
 			case "U":
 				session.setAttribute("usuario",usuarioAutenticado); 

@@ -14,35 +14,45 @@
 </head>
 <body>
 	<%@include file="../templates/banner.html" %>
-    <div >
+    <div class="wrapper">
         <h3 class="text-center">Tickets</h3>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Prioridad</th>
-                    <th scope="col">Observaciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${allTickets}" var="ticket">
-                	<tr>
-	                    <th scope="row">{{ticket.id}}</th>
-	                    <td>{{ticket.titulo}}</td>
-	                    <td>{{ticket.descripción}}</td>
-	                    <td>{{ticket.estado}}</td>
-	                    <td>{{ticket.prioridad}}</td>
-	                    <td>{{ticket.observaciones}}</td>
-	                    <td>
-	                    	<a class="btn btn-outline-info btn-sm" href="ListarMultasController?idVehiculo=${ticket.idTicket}">Actualizar ticket</a>
-	                    </td>
+        <c:if test="${tickets.size()==0}">
+			<div>
+				No existen tickets de soporte
+			</div>
+		</c:if>
+        <c:if test="${tickets.size() > 0 }">
+        	<table class="table table-hover">
+	            <thead>
+	                <tr>
+	                    <th>Título</th>
+	                    <th>Descripción</th>
+	                    <th>Estado</th>
+	                    <th>Prioridad</th>
+	                    <th>Encargado</th>
 	                </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+	            </thead>
+	            <tbody>
+	                <c:forEach items="${tickets}" var="ticket">
+	                	<tr>
+		                    <td>${ticket.titulo}</td>
+		                    <td>${ticket.descripcion}</td>
+		                    <td>${ticket.estado}</td>
+		                    <td>${ticket.prioridad}</td>
+		                   	<c:if test="${ticket.idDeveloper != 0}">
+		                   		<td>Tiene</td>
+		                   	</c:if>
+		                   	<c:if test="${ticket.idDeveloper == 0}">
+		                   		<td>No tiene</td>
+		                   	</c:if>
+		                    <td>
+		                    	<a class="btn btn-outline-info btn-sm" href="DEditarTicketController?idTicket=${ticket.idTicket}">Actualizar ticket</a>
+		                    </td>
+		                </tr>
+	                </c:forEach>
+	            </tbody>
+	        </table>
+        </c:if>
     </div>
 </body>
 <!--Footer-->
