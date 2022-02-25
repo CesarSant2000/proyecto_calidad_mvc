@@ -23,37 +23,21 @@
       
                     <h2 class="fw-bold mb-2 text-uppercase">Log-in</h2>
                     <p class="text-white-50 mb-5">Ingrese el correo y contraseña!</p>
-
-                    <!--NO SÉ SI AGREGARLE EL RADIOBUTTON PARA SABER QUE QUE TIPO DE USUARIO ES, O NO
-                        EL CÓDIGO DE LOS RADIOBUTTON ESTÁ AHI POR SI TOCA USARLO
-                        <div class="custom-control custom-radio">
-                        <h6>¿Usted es usuario o desarrollador?</h6>
-                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio1">Usuario</label>
-                      </div>
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio2">Desarrollo</label>
-                        <br><br>
-                      </div>-
-                    -->
       
                     <div class="form-outline form-white mb-4">
-                      	<input type="email" name="usuario" class="form-control form-control-lg" id="validation01" placeholder="Correo" required/>
+                      	<input type="text" name="usuario" class="form-control form-control-lg" id="validation01" placeholder="Usuario" required/>
                       	<div class="invalid-feedback">
-				        	Ingrese un Correo.
+				        	Ingrese un su nombre de usuario.
 						</div>
                     </div>
 
                     <div class="form-outline form-white mb-4">
-                      	<input type="password" name="password" class="form-control" id="validation02" placeholder="" required>
+                      	<input type="password" name="password" class="form-control" id="validation02" placeholder="Contraseña" required>
                    		<div class="invalid-feedback">
 				        	Ingrese una Clave.
 						</div>
                     </div>
-
                     
-
                     <input type="submit" value="Ingresar" class="btn btn-outline-light btn-lg px-5" ></input>
 
                   </div>
