@@ -14,11 +14,11 @@ import modelo.dao.UsuarioDAO;
 import modelo.entidades.Ticket;
 import modelo.entidades.Usuario;
 
-@WebServlet("/DEditarTicketController")
-public class DEditarTicketController extends HttpServlet {
+@WebServlet("/UEditarTicketController")
+public class UEditarTicketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public DEditarTicketController() {
+    public UEditarTicketController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class DEditarTicketController extends HttpServlet {
 		ArrayList<Usuario> desarrolladores = UsuarioDAO.getAllUsers();
 		request.setAttribute("ticket", ticketAModificar);
 		request.setAttribute("desarrolladores", desarrolladores);
-		request.getRequestDispatcher("jsp/Desarrollador/DEditarTicket.jsp").forward(request, response);
+		request.getRequestDispatcher("jsp/Usuario/UEditarTicket.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,8 +42,8 @@ public class DEditarTicketController extends HttpServlet {
 		String observaciones = request.getParameter("observaciones");
 		
 		Ticket t = new Ticket(idTicket, titulo, estado, descripcion, prioridad, idUser, idDeveloper, observaciones);
-		TicketDAO.actualizarTicketDesarrollador(t);
-		response.sendRedirect("DListarTicketController");
+		TicketDAO.actualizarTicketUsuario(t);
+		response.sendRedirect("UListarTicketController");
 	}
 
 }

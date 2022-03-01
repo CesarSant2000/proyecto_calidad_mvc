@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,49 +7,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Tickets-Crear Ticket</title>
-    <link rel="stylesheet" href="../../BootStrap/bootstrap.css">
+    <!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+		rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+		crossorigin="anonymous">
 </head>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark inli">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <img src="../Imagenes/ticket.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            <ul class="navbar-nav ">
-                <li class="nav-item  px-3">
-                    <a class="nav-link" href="#">Crear</a>
-                </li>
-                <li class="nav-item  px-3">
-                    <a class="nav-link" href="#">Listar</a>
-                </li>
-            </ul>
-        </div>
-        <div class="float-sm-end d-inline-block " id="navbarNav">
-    
-            <ul class="navbar-nav ">
-                <li class="nav-item  px-3">
-                    <a class="nav-link" href="#">Salir</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-
 <body >
-    <h3 class="text-center">Nuevo Ticket</h3>
-    <form method="post" action="#" class="p-5">
+    <%@include file="../templates/banner.html" %>
+    <form method="post" action="UCrearTicketController?idUsuario=${idUsuario}" class="p-5">
         <div class="form-group">
-          <label for="titulo">Título</label>
-          <input type="text" class="form-control" id="titulo" aria-describedby="tituloHelp" placeholder="Ingrese el Título">
+            <label for="titulo">Titulo</label>
+            <input type="text" class="form-control" id="titulo"
+                value="" name="titulo">
         </div>
         <br>
         <div class="form-group">
             <label for="descripcion">Descripción</label>
-            <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingrese la descripción..."></textarea>
-          </div>
-
+            <textarea class="form-control" id="descripcion" rows="3" name="descripcion"></textarea>
+        </div>
         <br>
-        <button type="submit" class="btn btn-dark ">Enviar</button>
-      </form>
+        <input type="submit" value="Guardar" class="btn btn-dark">
+    </form>
 </body>
 <footer class="text-center text-lg-start fixed-bottom">
     <!-- Copyright -->
