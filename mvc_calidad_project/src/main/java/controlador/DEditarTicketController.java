@@ -20,18 +20,28 @@ public class DEditarTicketController extends HttpServlet {
 
     public DEditarTicketController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Ticket ticketAModificar = TicketDAO.getTicket(Integer.parseInt(request.getParameter("idTicket")));
-		ArrayList<Usuario> desarrolladores = UsuarioDAO.getAllUsers();
-		request.setAttribute("ticket", ticketAModificar);
-		request.setAttribute("desarrolladores", desarrolladores);
-		request.getRequestDispatcher("jsp/Desarrollador/DEditarTicket.jsp").forward(request, response);
+		try {
+			Ticket ticketAModificar = TicketDAO.getTicket(Integer.parseInt(request.getParameter("idTicket")));
+			ArrayList<Usuario> desarrolladores = UsuarioDAO.getAllUsers();
+			request.setAttribute("ticket", ticketAModificar);
+			request.setAttribute("desarrolladores", desarrolladores);
+			request.getRequestDispatcher("jsp/Desarrollador/DEditarTicket.jsp").forward(request, response);
+		} catch (NumberFormatException numE) {
+			numE.printStackTrace();
+		} catch (IOException ioE) {
+			ioE.printStackTrace();
+		} catch (ServletException serE) {
+			serE.printStackTrace();
+		}
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		int idTicket = Integer.parseInt(request.getParameter("idTicket"));
 		String titulo = request.getParameter("titulo");
 		String estado = request.getParameter("estado");
@@ -44,6 +54,11 @@ public class DEditarTicketController extends HttpServlet {
 		Ticket t = new Ticket(idTicket, titulo, estado, descripcion, prioridad, idUser, idDeveloper, observaciones);
 		TicketDAO.actualizarTicketDesarrollador(t);
 		response.sendRedirect("DListarTicketController");
+		} catch (NumberFormatException numE) {
+			numE.printStackTrace();
+		} catch (IOException ioE) {
+			ioE.printStackTrace();
+		}
 	}
 
 }
