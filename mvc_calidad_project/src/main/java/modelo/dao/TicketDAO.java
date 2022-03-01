@@ -41,9 +41,7 @@ public class TicketDAO {
 				pstmt2.setInt(6, rs1.getInt("ID_USUARIO"));
 			}
 			pstmt2.setString(7, t.getObservaciones());
-			
-			boolean fila = pstmt2.execute();
-			System.out.println("Numero de filas afectadas: "+fila);
+			pstmt2.execute();
 			return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -130,8 +128,6 @@ public class TicketDAO {
 	}
 	
 	public static ArrayList<Ticket> getTickets(int idUsuario){
-//		Lo dejo implementando pero no lo pruebo 
-//		TODO: Cesar probar el metodo
 		Ticket ticket = null;
 		ArrayList<Ticket> allTickets = new ArrayList<>();
 		try {
