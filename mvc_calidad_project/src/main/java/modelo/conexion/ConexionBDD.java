@@ -16,16 +16,13 @@ public class ConexionBDD {
 			String servidor = "20.201.64.194";
 			String database = "calidad_mvc";
 			String usuario = "project";
-			String clave = "";
+			String password = "";
 			String url = "jdbc:mysql://" + servidor + "/" + database;
-			
-				DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			
-			instancia = DriverManager.getConnection(url, usuario, clave);
+			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			instancia = DriverManager.getConnection(url, usuario, password);
 			System.out.println("Conexion realizada");
 		}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -41,7 +38,7 @@ public class ConexionBDD {
 		try {
 			rs.close();
 		}catch (SQLException e) {
-			rs = null;
+			e.printStackTrace();
 		}
 		
 	}
@@ -52,7 +49,6 @@ public class ConexionBDD {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		pstmt = null;
 	}
 	
 }

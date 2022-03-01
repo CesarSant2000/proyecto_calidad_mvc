@@ -19,15 +19,25 @@ public class LogOutController extends HttpServlet {
     }
 
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();  
-        session.invalidate(); 
-		response.sendRedirect("LoginController");
+		try {
+			HttpSession session=request.getSession();  
+	        session.invalidate(); 
+			response.sendRedirect("LoginController");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		doGet(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

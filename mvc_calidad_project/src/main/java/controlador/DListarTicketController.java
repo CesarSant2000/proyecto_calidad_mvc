@@ -20,15 +20,20 @@ public class DListarTicketController extends HttpServlet {
         super();
     }
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Ticket> allTickets = TicketDAO.getTickets();
 		request.setAttribute("tickets", allTickets);
 		request.getRequestDispatcher("jsp/Desarrollador/DListarTickets.jsp").forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			doGet(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
