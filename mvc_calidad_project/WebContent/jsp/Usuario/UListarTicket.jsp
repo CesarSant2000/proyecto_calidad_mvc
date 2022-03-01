@@ -1,61 +1,57 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Tickets-Listar Ticket</title>
-    <link rel="stylesheet" href="../../BootStrap/bootstrap.css">
+    <!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+		rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+		crossorigin="anonymous">
 </head>
-<!--Header-->
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark inli">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <img src="../Imagenes/ticket.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            <ul class="navbar-nav ">
-                <li class="nav-item  px-3">
-                    <a class="nav-link" href="#">Crear</a>
-                </li>
-                <li class="nav-item  px-3">
-                    <a class="nav-link" href="#">Listar</a>
-                </li>
-            </ul>
-        </div>
-        <div class="float-sm-end d-inline-block " id="navbarNav">
-    
-            <ul class="navbar-nav ">
-                <li class="nav-item  px-3">
-                    <a class="nav-link" href="#">Salir</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <body>
-    <div >
-        
+	<%@include file="../templates/banner.html" %>
+    <div class="wrapper">
         <h3 class="text-center">Tickets</h3>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="" (click)="">
-                    <th scope="row">{{ticket.id}}</th>
-                    <td>{{ticket.titulo}}</td>
-                    <td>{{ticket.descripción}}</td>
-                    <td>{{ticket.estado}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" class="float-sm-end  btn btn-primary btn-lg btn-block   btn-dark bg-dark">Nuevo
-            Ticket</button>
+        <c:if test="${tickets.size()==0}">
+			<div>
+				No existen tickets de soporte
+			</div>
+		</c:if>
+        <c:if test="${tickets.size() > 0 }">
+        	<table class="table table-hover">
+	            <thead>
+	                <tr>
+	                    <th>Título</th>
+	                    <th>Descripción</th>
+	                    <th>Estado</th>
+	                    <th>Prioridad</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <c:forEach items="${tickets}" var="ticket">
+	                	<tr>
+		                    <td>${ticket.titulo}</td>
+		                    <td>${ticket.descripcion}</td>
+		                    <td>${ticket.estado}</td>
+		                    <td>${ticket.prioridad}</td>
+		                    <td>
+		                    	<a class="btn btn-outline-info btn-sm" href="UEditarTicketController?idTicket=${ticket.idTicket}">Actualizar ticket</a>
+		                    </td>
+		                </tr>
+	                </c:forEach>
+	            </tbody>
+	        </table>
+        </c:if>
+    </div>
+    <h3 class="text-center">Crear un ticket</h3>
+    <div class="row d-flex justify-content-center flex-nowrap my-3">
+   
+    <a class="btn btn-outline-success btn-sm text-center w-auto" href="UCrearTicketController?idUsuario=${elUsuario}">Crear ticket</a>
     </div>
 </body>
 <footer class="text-center text-lg-start fixed-bottom">

@@ -34,10 +34,11 @@ public class LoginController extends HttpServlet {
 			switch(usuarioAutenticado.getTipoUsuario()) {
 			case "U":
 				session.setAttribute("usuario",usuarioAutenticado); 
+				session.setAttribute("usuarioID",usuarioAutenticado.getIdUsuario());
 				response.sendRedirect("UListarTicketController");
 				break;
 			case "D":
-				session.setAttribute("usuario",usuarioAutenticado); 
+				session.setAttribute("usuario",usuarioAutenticado);
 				response.sendRedirect("DListarTicketController");
 				break;
 			default:

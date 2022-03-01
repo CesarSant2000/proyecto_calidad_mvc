@@ -40,6 +40,16 @@ public class Ticket implements Serializable{
 		this.idDeveloper = idDeveloper;
 		this.observaciones = observaciones;
 	}
+	
+	public Ticket(String titulo, String estado, String descripcion, String prioridad, int idUser, String observaciones) {
+		super();
+		this.titulo = titulo;
+		this.estado = estado;
+		this.descripcion = descripcion;
+		this.prioridad = prioridad;
+		this.idUser = idUser;
+		this.observaciones = observaciones;
+	}
 
 	public int getIdTicket() {
 		return idTicket;
