@@ -40,16 +40,23 @@
         </div>
         <br>
         <div class="form-group">
-            <label for="encargado">Encargado</label>
-            <input type="text" class="form-control" id="encargado"
-                value="${ticket.idDeveloper}" readonly="readonly" name="encargado">
+            <label for="encargadoD">Encargado</label>
+            <c:forEach items="${desarrolladores}" var="desarrollador">
+	        	<c:if test="${desarrollador.idUsuario == ticket.idDeveloper}">
+		        	<input type="text" class="form-control" id="encargadoD"
+	                	value="${desarrollador.username}" placeholder="${desarrollador.username}" readonly="readonly" name="encargadoD">
+	        	</c:if>
+	        </c:forEach>
         </div>
         <br>
         <div class="form-group">
             <label for="observaciones">Observaciones</label>
             <textarea class="form-control" id="observaciones" rows="3" placeholder="Ingrese la observaciones..." readonly="readonly" name="observaciones">${ticket.observaciones}</textarea>
         </div>
-
+        <div>
+        	<input type="hidden" class="form-control" id="encargado"
+               	value="${ticket.idDeveloper}" readonly="readonly" name="encargado">
+        </div>
         <br>
         <input type="submit" value="Guardar" class="btn btn-dark">
     </form>
