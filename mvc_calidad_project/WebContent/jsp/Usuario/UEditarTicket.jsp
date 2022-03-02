@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Tickets-Editar Ticket</title>
     <!-- CSS only -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
